@@ -1,0 +1,59 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+h1 {
+	font-size: 24px;
+}
+
+.wrapper {
+	margin: 0 auto;
+	color: rgb(35, 34, 34);
+	width: 95%;
+	background-color: rgb(237, 231, 231);
+	border-radius: 2rem;
+	padding: 2rem 0rem;
+	box-shadow: 5px 5px 5px rgb(206, 199, 199);
+}
+
+.conteiner {
+	background-color: rgb(198, 194, 190);
+	text-align: center;
+	border-radius: 2rem;
+	margin: 1em 2rem;
+	padding: 1rem;
+	box-shadow: 5px 5px 5px rgb(137, 133, 133);
+
+}
+
+.content {
+	margin: 1rem 0rem;
+}
+
+label {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.calcul {
+	margin: 1rem;
+}
+
+.result {
+	margin: 0 auto;
+	width: 20%;
+	padding: 1rem;
+	border: 1px solid #232323;
+}
+
+.history {
+	display: flex;
+	justify-content: center;
+}
+
+th,
+td {
+	padding: 5px 10px;
+	border: 1px solid #232323;
+}
