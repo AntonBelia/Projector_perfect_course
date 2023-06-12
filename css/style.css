@@ -37,7 +37,7 @@ label {
 }
 
 .calcul {
-	margin: 1rem;
+	margin: 1%;
 }
 
 .result {
@@ -54,6 +54,6 @@ label {
 
 th,
 td {
-	padding: 5px 10px;
+	padding: 5px 2px;
 	border: 1px solid #232323;
 }
