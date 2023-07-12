@@ -19,7 +19,7 @@ restartBtn.addEventListener("click", restart);
 calculBtn.addEventListener("click", calcul);
 
 function checkingLocalStorage() {
-	renderDataFromLocalStorage();
+  renderDataFromLocalStorage();
 }
 
 function setStartDateToLocalStorage() {
@@ -103,10 +103,10 @@ function unitOfMeasurement(num1, num2, dimension) {
 }
 
 function savingResultsToLocalStorage(num1, num2, result) {
-  let savedData 
+  let savedData;
   let savedDataElement = [num1, num2, result];
 
-  if (localStorage.getItem("savedData") == null) {
+  if (localStorage.getItem("savedData") === null) {
     savedData = [];
   } else {
     savedData = JSON.parse(localStorage.getItem("savedData"));
@@ -123,9 +123,10 @@ function savingResultsToLocalStorage(num1, num2, result) {
 }
 
 function renderDataFromLocalStorage() {
-	if (localStorage.getItem("savedData") == null) {
-		return
-	}
+  if (localStorage.getItem("savedData") === null) {
+    return;
+  }
+  history.innerHTML = "";
   const outputData = JSON.parse(localStorage.getItem("savedData")).reverse();
   outputData.forEach((DataElement) => {
     createOutpudData(DataElement);
@@ -133,12 +134,13 @@ function renderDataFromLocalStorage() {
 }
 
 function createOutpudData(DataElement) {
-	const tr = document.createElement('tr')
-	tr.innerHTML = `
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
 	<th>${DataElement[0]}</th>
 	<th>${DataElement[1]}</th>
-	<th>${DataElement[2]}</th>`
-	tr.className = 'element-history'
-	
-	history.appendChild(tr)
+	<th>${DataElement[2]}</th>`;
+  tr.className = "element-history";
+
+  history.appendChild(tr);
 }
+de
