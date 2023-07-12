@@ -143,4 +143,3 @@ function createOutpudData(DataElement) {
 
   history.appendChild(tr);
 }
-de
