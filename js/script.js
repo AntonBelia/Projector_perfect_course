@@ -4,8 +4,6 @@ const startDate = document.getElementById("start-date");
 const startDateBtn = document.querySelector(".date1");
 const endDate = document.getElementById("end-date");
 const endDateBtn = document.querySelector(".date2");
-const forPlayback = document.getElementById("forPlayback");
-const restartBtn = document.querySelector(".restart");
 const calculBtn = document.getElementById("calculate-btn");
 const inputResult = document.getElementById("result");
 const optionsDays = document.getElementById("options");
@@ -15,7 +13,6 @@ const history = document.getElementById("history");
 document.addEventListener("DOMContentLoaded", checkingLocalStorage);
 startDateBtn.addEventListener("click", setStartDateToLocalStorage);
 endDateBtn.addEventListener("click", setEndDateToLocalStorage);
-restartBtn.addEventListener("click", restart);
 calculBtn.addEventListener("click", calcul);
 
 function checkingLocalStorage() {
@@ -27,59 +24,45 @@ function setStartDateToLocalStorage() {
     alert("Введіть початкову дату");
   } else {
     localStorage.setItem("startDate", JSON.stringify(startDate.value));
-    forPlayback.classList.remove("hidden");
+    endDate.setAttribute('min', startDate.value)
+    endDate.removeAttribute('disabled')
+    endDateBtn.removeAttribute('disabled')
   }
 }
 
 function setEndDateToLocalStorage() {
   if (endDate.value.length < 1) {
     alert("Введіть кінцеву дату");
-  } else if (startDate.value > endDate.value) {
-    alert("Кінцева дата менша за початкову");
-    endDate.value = "";
   } else {
-    startDate.disabled = 1;
+    startDate.setAttribute('max', endDate.value);
+    calculBtn.removeAttribute('disabled')
     localStorage.setItem("endDate", JSON.stringify(endDate.value));
   }
 }
 
-function restart() {
-  startDate.value = "";
-  endDate.value = "";
-  startDate.disabled = 0;
-  forPlayback.classList.add("hidden");
-}
-
 function calcul(num1, num2, dimension = "month", calculDays = "all") {
-  if (startDate.value.length < 1 || endDate.value.length < 1) {
-    return alert("Введені не всі данні");
-  }
   num1 = new Date(startDate.value).getTime();
   num2 = new Date(endDate.value).getTime();
   dimension = measurementsSelect.value;
   calculDays = optionsDays.value;
-  const intermediateResult = unitOfMeasurement(num1, num2, dimension).split(
-    " "
-  );
-
+  const intermediateResult = unitOfMeasurement(num1, num2, dimension).split(" ");
+  
   switch (calculDays) {
     case "all":
-      inputResult.textContent = intermediateResult.join(" ");
+      inputResult.textContent = intermediateResult.join(" ")
+      savingResultsToLocalStorage(startDate.value, endDate.value, inputResult.textContent);
+      return inputResult.textContent;
     case "weekdays":
       intermediateResult[0] = ((intermediateResult[0] * 5) / 7).toFixed();
       inputResult.textContent = intermediateResult.join(" ");
+      savingResultsToLocalStorage(startDate.value, endDate.value, inputResult.textContent);
+      return inputResult.textContent;
     case "weekends":
       intermediateResult[0] = ((intermediateResult[0] * 2) / 7).toFixed();
       inputResult.textContent = intermediateResult.join(" ");
+      savingResultsToLocalStorage(startDate.value, endDate.value, inputResult.textContent);
+      return inputResult.textContent;
   }
-  savingResultsToLocalStorage(
-    startDate.value,
-    endDate.value,
-    inputResult.textContent
-  );
-
-  localStorage.setItem("startDate", "");
-  localStorage.setItem("endDate", "");
 }
 
 function unitOfMeasurement(num1, num2, dimension) {
