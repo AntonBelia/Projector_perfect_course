@@ -1,9 +1,7 @@
 "use strict";
 
 const startDate = document.getElementById("start-date");
-const startDateBtn = document.querySelector(".date1");
 const endDate = document.getElementById("end-date");
-const endDateBtn = document.querySelector(".date2");
 const calculBtn = document.getElementById("calculate-btn");
 const inputResult = document.getElementById("result");
 const optionsDays = document.getElementById("options");
@@ -11,34 +9,23 @@ const measurementsSelect = document.getElementById("measurements");
 const history = document.getElementById("history");
 
 document.addEventListener("DOMContentLoaded", checkingLocalStorage);
-startDateBtn.addEventListener("click", setStartDateToLocalStorage);
-endDateBtn.addEventListener("click", setEndDateToLocalStorage);
+startDate.addEventListener("change", setStartDate);
+endDate.addEventListener("change", setEndDate);
 calculBtn.addEventListener("click", calcul);
 
 function checkingLocalStorage() {
   renderDataFromLocalStorage();
 }
 
-function setStartDateToLocalStorage() {
-  if (startDate.value.length < 1) {
-    alert("Введіть початкову дату");
-  } else {
-    localStorage.setItem("startDate", JSON.stringify(startDate.value));
+function setStartDate() {
     endDate.setAttribute('min', startDate.value)
     endDate.removeAttribute('disabled')
-    endDateBtn.removeAttribute('disabled')
   }
-}
 
-function setEndDateToLocalStorage() {
-  if (endDate.value.length < 1) {
-    alert("Введіть кінцеву дату");
-  } else {
+function setEndDate() {
     startDate.setAttribute('max', endDate.value);
     calculBtn.removeAttribute('disabled')
-    localStorage.setItem("endDate", JSON.stringify(endDate.value));
   }
-}
 
 function calcul(num1, num2, dimension = "month", calculDays = "all") {
   num1 = new Date(startDate.value).getTime();
