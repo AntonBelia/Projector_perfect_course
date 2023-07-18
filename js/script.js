@@ -18,8 +18,8 @@ addMonthBtn.addEventListener("click", addMonth);
 addWeekBtn.addEventListener("click", addWeek);
 
 const date = new Date();
-const timeMonth = 2594159720;
-const timeWeek = 606959720;
+const timeMonth = 2629800000;
+const timeWeek = 604800020;
 
 function removeAttribute() {
   endDate.removeAttribute("disabled");
@@ -27,23 +27,23 @@ function removeAttribute() {
 }
 
 function createNewDate() {
-  return `${date.getFullYear()}-
-  ${("0" + (date.getMonth() + 1)).slice(-2)}-
-  ${("0" + date.getDate()).slice(-2)}`;
+  return `${date.getFullYear()}-${
+    ("0" + (date.getMonth() + 1)).slice(-2)}-${
+      ("0" + date.getDate()).slice(-2)}`;
 }
 
 function addMonthToNewDate(date) {
   const datePlusMonth = new Date(date.getTime() + timeMonth);
-  return `${datePlusMonth.getFullYear()}-
-  ${("0" +(datePlusMonth.getMonth() + 1)).slice(-2)}-
-  ${("0" + datePlusMonth.getDate()).slice(-2)}`;
+  return `${datePlusMonth.getFullYear()}-${
+    ("0" +(datePlusMonth.getMonth() + 1)).slice(-2)}-${
+      ("0" + datePlusMonth.getDate()).slice(-2)}`;
 }
 
 function addWeekToNewDate(date) {
   const datePlusMonth = new Date(date.getTime() + timeWeek);
-  return `${datePlusMonth.getFullYear()}-
-  ${("0" +(datePlusMonth.getMonth() + 1)).slice(-2)}-
-  ${("0" + datePlusMonth.getDate()).slice(-2)}`;
+  return `${datePlusMonth.getFullYear()}-${
+    ("0" +(datePlusMonth.getMonth() + 1)).slice(-2)}-${
+      ("0" + datePlusMonth.getDate()).slice(-2)}`;
 }
 
 function addMonth() {
