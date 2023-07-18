@@ -7,17 +7,68 @@ const inputResult = document.getElementById("result");
 const optionsDays = document.getElementById("options");
 const measurementsSelect = document.getElementById("measurements");
 const history = document.getElementById("history");
+const addMonthBtn = document.getElementById("month");
+const addWeekBtn = document.getElementById("week");
 
 document.addEventListener("DOMContentLoaded", checkingLocalStorage);
 startDate.addEventListener("change", setStartDate);
 endDate.addEventListener("change", setEndDate);
 calculBtn.addEventListener("click", calcul);
+addMonthBtn.addEventListener("click", addMonth);
+addWeekBtn.addEventListener("click", addWeek);
 
 function checkingLocalStorage() {
   renderDataFromLocalStorage();
 }
 
+const date = new Date()
+const timeMonth = 2594159720
+const timeWeek = 606959720
+
+function removeAttribute () {
+  endDate.removeAttribute('disabled')
+  calculBtn.removeAttribute('disabled')
+}
+
+function createNewDate () {
+  return `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`
+}
+
+function addMonthToNewDate (date) {
+  const datePlusMonth = new Date(date.getTime() + timeMonth)
+  return `${datePlusMonth.getFullYear()}-${("0" + (datePlusMonth.getMonth() + 1)).slice(-2)}-${("0" + datePlusMonth.getDate()).slice(-2)}`
+}
+
+function addWeekToNewDate (date) {
+  const datePlusMonth = new Date(date.getTime() + timeWeek)
+  return `${datePlusMonth.getFullYear()}-${("0" + (datePlusMonth.getMonth() + 1)).slice(-2)}-${("0" + datePlusMonth.getDate()).slice(-2)}`
+}
+
+function addMonth () {
+  if (startDate.value === '') {
+    startDate.value = createNewDate ()
+    endDate.value = addMonthToNewDate (date)
+    removeAttribute ()
+  } else if (startDate.value !== '') {
+    endDate.value = addMonthToNewDate (new Date(startDate.value))
+    removeAttribute ()
+  }
+}
+
+function addWeek () {
+  if (startDate.value === '') {
+    startDate.value = createNewDate ()
+    endDate.value = addWeekToNewDate (date)
+    removeAttribute ()
+  } else if (startDate.value !== '') {
+    endDate.value = addWeekToNewDate (new Date(startDate.value))
+    removeAttribute ()
+  }
+  
+}
+
 function setStartDate() {
+  console.log(new Date(startDate.value).getTime())
     endDate.setAttribute('min', startDate.value)
     endDate.removeAttribute('disabled')
   }
@@ -27,7 +78,7 @@ function setEndDate() {
     calculBtn.removeAttribute('disabled')
   }
 
-function calcul(num1, num2, dimension = "month", calculDays = "all") {
+function calcul(num1, num2, dimension = "days", calculDays = "all") {
   num1 = new Date(startDate.value).getTime();
   num2 = new Date(endDate.value).getTime();
   dimension = measurementsSelect.value;
@@ -65,10 +116,6 @@ function unitOfMeasurement(num1, num2, dimension) {
       return Math.abs(subtraction / 60 / 60) + " hours";
     case "days":
       return Math.abs(subtraction / 60 / 60 / 24).toFixed() + " days";
-    case "week":
-      return Math.abs(subtraction / 60 / 60 / 24 / 7).toFixed() + " week";
-    case "month":
-      return Math.abs(subtraction / 60 / 60 / 24 / 30).toFixed() + " month";
   }
 }
 
