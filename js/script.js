@@ -10,16 +10,12 @@ const history = document.getElementById("history");
 const addMonthBtn = document.getElementById("month");
 const addWeekBtn = document.getElementById("week");
 
-document.addEventListener("DOMContentLoaded", checkingLocalStorage);
+document.addEventListener("DOMContentLoaded", renderDataFromLocalStorage);
 startDate.addEventListener("change", setStartDate);
 endDate.addEventListener("change", setEndDate);
 calculBtn.addEventListener("click", calcul);
 addMonthBtn.addEventListener("click", addMonth);
 addWeekBtn.addEventListener("click", addWeek);
-
-function checkingLocalStorage() {
-  renderDataFromLocalStorage();
-}
 
 const date = new Date()
 const timeMonth = 2594159720
