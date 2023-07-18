@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="en">
 
 <head>
 	<title>Course_project</title>
@@ -11,57 +11,62 @@
 <body>
 	<div class="wrapper">
 		<div class="conteiner">
-			<h1>Час проведений на улюбленій роботі</h1>
+			<h1>Time spent at favorite work</h1>
 		</div>
 		<div class="conteiner">
 			<div class="content">
-				<label for="start-date">Початкова дата:</label>
-				<input type="date" id="start-date">
+				<label for="start-date">Start date:</label>
+				<input type="date" id="start-date" class="startDate" >
 			</div>
-			<div class="content">
-				<label for="end-date">Кінцева дата:</label>
-				<input type="date" id="end-date">
+			<div class="content" >
+				<label for="end-date">End date:</label>
+				<input type="date" id="end-date" disabled>
+			</div>
+		</div>
+		<div class="conteiner">
+			<div >
+				<label>Presets</label>
+				<button id="month" class="presets">Month</button>
+				<button id="week" class="presets">Week</button>
 			</div>
 		</div>
 		<div class="conteiner">
 			<div class="content">
-				<label for="options">Опції:</label>
+				<label for="options">Options:</label>
 				<select id="options">
-					<option value="all">Всі дні</option>
-					<option value="weekdays">Будні дні</option>
-					<option value="weekends">Вихідні дні</option>
+					<option value="all">All days</option>
+					<option value="weekdays">Working days</option>
+					<option value="weekends">Weekend</option>
 				</select>
 			</div>
 		</div>
 		<div class="conteiner">
 			<div class="content">
-				<label for="measurements">Одиниці виміру:</label>
+				<label for="measurements">Units of measurement:</label>
 				<select id="measurements">
-					<option value="month">Кількість місяців</option>
-					<option value="week">Кількість тижнів</option>
-					<option value="days">Кількість днів</option>
-					<option value="hours">Кількість годин</option>
-					<option value="minutes">Кількість хвилин</option>
-					<option value="seconds">Кількість секунд</option>
+					<option value="days">Days</option>
+					<option value="hours">Hours</option>
+					<option value="minutes">Minutes</option>
+					<option value="seconds">Seconds</option>
 				</select>
 			</div>
 		</div>
 		<div class="conteiner">
 			<div class="content">
-				<button id="calculate-btn" class="calcul">Розрахувати</button>
-
+				<button id="calculate-btn" class="calcul" disabled>Calculate</button>
 				<div id="result" class="result"></div>
 			</div>
 		</div>
 		<div class="conteiner">
 			<div class="content">
+				<label for="history-table">History:</label>
 				<div class="history">
 					<table id="history-table">
 						<thead>
 							<tr>
-								<th>Початкова дата</th>
-								<th>Кінцева дата</th>
-								<th>Результат</th>
+								<th>Start date:</th>
+								<th>End date:</th>
+								<th>Calculate:</th>
 							</tr>
 						</thead>
 						<tbody id="history"></tbody>
@@ -70,8 +75,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="http://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-	<script src="../css_1/js/script.js"></script>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>

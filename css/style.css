@@ -1,30 +1,32 @@
 body {
+	color: aqua;
+	background-color: rgb(40, 40, 40);
 	font-family: Arial, Helvetica, sans-serif;
 
 }
 
 h1 {
-	font-size: 24px;
+	color: rgb(150, 150, 150);
+	font-size: 1.2rem;
 }
 
 .wrapper {
 	margin: 0 auto;
-	color: rgb(35, 34, 34);
+	color: rgb(150, 150, 150);
 	width: 95%;
-	background-color: rgb(237, 231, 231);
+	background-color: rgb(10, 10, 10);
 	border-radius: 2rem;
 	padding: 2rem 0rem;
-	box-shadow: 5px 5px 5px rgb(206, 199, 199);
+	box-shadow: 5px 5px 5px rgb(20, 20, 20);
 }
 
 .conteiner {
-	background-color: rgb(198, 194, 190);
+	background-color: rgb(40, 40, 40);
 	text-align: center;
 	border-radius: 2rem;
-	margin: 1em 2rem;
+	margin: 1rem 2rem;
 	padding: 1rem;
-	box-shadow: 5px 5px 5px rgb(137, 133, 133);
-
+	box-shadow: 5px 5px 5px rgb(20, 20, 20);
 }
 
 .content {
@@ -32,12 +34,21 @@ h1 {
 }
 
 label {
-	font-size: 20px;
+	font-size: 1rem;
 	font-weight: 700;
 }
 
 .calcul {
-	margin: 1rem;
+	border-radius: 6px;
+	font-size: 1rem;
+	padding: 5px;
+	margin: 2%;
+}
+.presets {
+	border-radius: 6px;
+	font-size: 16px;
+	padding: 5px;
+	margin: 1%;
 }
 
 .result {
@@ -54,6 +65,8 @@ label {
 
 th,
 td {
-	padding: 5px 10px;
+	font-size: 1rem;
+	padding: 5px 2px;
 	border: 1px solid #232323;
 }
+
